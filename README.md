@@ -1,4 +1,4 @@
-= Raspberry Pi for Serious Things
+# Raspberry Pi for Serious Things
 
 It is almost more than a year ago that I bought my first Raspberry Pi (cf. http://raspberrypi.org). Apart from being a "nice toy", the RPi can be used for some serious things.
 
