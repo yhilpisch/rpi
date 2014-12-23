@@ -1,4 +1,4 @@
-.. Raspberry Pi documentation master file, created by
+.. Raspberry Pi for Serious Things master file, created by
    (c) Dr. Yves J. Hilpisch.
    The Python Quants GmbH
 
@@ -41,7 +41,7 @@ Under Linux do::
 
 The next step is to write the OS image to the SD card::
 
-    sudo dd bs=1m if=os-image.img of=/dev/disk4
+    sudo dd bs=1m if=os-image.img of=/dev/diskX
 
 Here, replace the image name and the disk name with those that apply for you.
 
@@ -140,19 +140,23 @@ Then copy the public key via (Linux)::
 
 On the Mac see, for example, https://github.com/beautifulcode/ssh-copy-id-for-OSX.
 
-About the author
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Yves Hilpisch is managing partner of The Python Quants GmbH (Germany) and co-founder of The Python Quants LLC (New York City). The Python Quants provide, among others, the **Python Quant Platform** as a solution for browser-based, interactive, collaborative financial analytics (cf. http://quant-platform.com). On this platform (for which free trials are available) you can also immediately try our open source financial analytics library DX Analytics (http://dx-analytics.com).
-
-Contents of the Documentation
+Small Projects with the RPi
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Having set up the RPi (in particular for ``ssh`` access), you can now move on and implement one or more of the following smaller projects:
 
 The documentation is structured as follows:
 
 .. toctree::
    :maxdepth: 2
 
+   ftp
+
+
+About the author
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Yves Hilpisch is managing partner of The Python Quants GmbH (Germany) and co-founder of The Python Quants LLC (New York City). The Python Quants provide, among others, the **Python Quant Platform** as a solution for browser-based, interactive, collaborative financial analytics (cf. http://quant-platform.com). On this platform (for which free trials are available) you can also immediately try our open source financial analytics library DX Analytics (http://dx-analytics.com).
    
 
 .. Indices and tables
