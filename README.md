@@ -4,6 +4,7 @@ It is almost more than a year ago that I bought my first Raspberry Pi (cf. http:
 
 This "little year end pet project" of mine is a try to cover a set of topics that might be of interest to those who want to use the RPi for such things like:
 
+* Interactive data analytics
 * FTP server or
 * Webcam surveillance
 
