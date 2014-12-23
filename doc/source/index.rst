@@ -150,7 +150,8 @@ The documentation is structured as follows:
 .. toctree::
    :maxdepth: 2
 
-   ftp
+   01_ipython
+   02_ftp
 
 
 About the author
