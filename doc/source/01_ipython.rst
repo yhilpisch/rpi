@@ -6,6 +6,9 @@ This example is about data analytics with Python (cf. http://python.org) and IPy
 
     sudo apt-get install python-pip python-dev build-essential 
 
+Installing Data Analytics Libraries
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Any serious data analytics effort with Python generally includes to some extent the pandas library (cf. http://pandas.pydata.org). To install it, upgrade the NumPy library first (cf. http://scipy.org)::
 
     sudo pip install numpy --upgrade
@@ -20,9 +23,18 @@ This also takes some time (again 1h+). Also install the matplotlib plotting libr
     sudo apt-get install libpng-dev libjpeg8-dev libfreetype6-dev
     sudo pip install matplotlib
 
-And, oh wonder, this also takes quite a while to install and compile. However, your patience will pay off: your RPi will be equipped with **state-of-the-art Python-based data analytics libraries** that can be used then for a wide range of data crunching tasks. Finally, install the IPython interactive analytics environment::
+And, oh wonder, this also takes quite a while to install and compile. We might want to install another useful library, namely PyTables (cf. http://pytables.org) for efficient I/O with Python::
+
+    sudo pip install numexpr
+    sudo pip install cython
+    sudo pip install tables 
+
+All this taken together takes a few hours in total. However, your patience will pay off: your RPi will be equipped with **state-of-the-art Python-based data analytics libraries** that can be used then for a wide range of data collection, crunching and storage tasks. Finally, install the IPython interactive analytics environment::
 
     sudo pip install ipython
+
+Interactive Data Analytics
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Now start IPython on the shell via::
 
@@ -85,3 +97,16 @@ The saved png plot might then look like below.
 .. image:: aapl.png
 
 Via the shell (either directly or via ``ssh`` access) such figures cannot be displayed. However, you could imagine to run a Web site on the RPi where the figure is included and displayed via html. You could also send such a graphical output/result e.g. by email.
+
+Fast I/O Operations
+~~~~~~~~~~~~~~~~~~~~~~~
+
+When using the RPi for data collection purposes, it might be beneficial to have efficient I/O capabilities available. This is where the PyTables library comes into play. The following is a Python script that collects stock data for a number of symbols and stores the data on disk in HDF5 format (cf. http://hdfgroup.org).
+
+.. literalinclude:: data_collection.py
+
+Here, the :download:`download link<./data_collection.py>` for the script. The data gathered by this Python script is not that large. The following script generates a set with pseudo-random sample data which is 80 MB in size and writes it to disk.
+
+.. literalinclude:: large_data_set.py
+
+The :download:`download link<./large_data_set.py>` for this script.
