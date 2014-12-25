@@ -46,41 +46,49 @@ Historical Stock Price Data
 
 This Web application retrieves historical stock price data for a user given **ticker symbol** and calculates **two different trends (moving averages)**. It then outputs a figure with the data and results as well as a HTML table with the raw data.
 
-Let us start with the Web app code itself:
+Let us start with the **Web app code** itself:
 
 .. literalinclude:: ./stock_app/stock_data.py
 
 The :download:`download link<./stock_app/stock_data.py>` for this Python script.
 
-We need a simple WTF form for data input (:download:`download link<./stock_app//forms.py>`)
+We need a simple **WTF form** for data input (:download:`download link<./stock_app//forms.py>`)
 
 .. literalinclude:: ./stock_app/forms.py
 
 
-The major layout template (:download:`download link<./stock_app/templates/layout.html>`:
+The major **layout template** (:download:`download link<./stock_app/templates/layout.html>`:
 
 .. literalinclude:: ./stock_app/templates/layout.html
     :language: html
 
-The sub-template for the data input (:download:`download link<./stock_app/templates/selection.html>`):
+The sub-template for the **data input** (:download:`download link<./stock_app/templates/selection.html>`):
 
 .. literalinclude:: ./stock_app/templates/selection.html
     :language: html
 
-And the sub-template for the results output (:download:`download link<./stock_app/templates/results.html>`):
+And the sub-template for the **results output** (:download:`download link<./stock_app/templates/results.html>`):
 
 .. literalinclude:: ./stock_app/templates/results.html
     :language: html
 
-Finally, a bit of CSS styling (:download:`download link<./stock_app/static/style.css>`)
+Also, a bit of **CSS** styling (:download:`download link<./stock_app/static/style.css>`)
 
 .. literalinclude:: ./stock_app/static/style.css
     :language: css
+
+Finally, the **Tornado WSGI wrapper** for the app (:download:`download link<./stock_app/run_stock_app.py>`):
+
+.. literalinclude:: ./stock_app/run_stock_app.py
+
 
 All these files should be placed in the following folder structure:
 
 .. ipython:: python
 
+When the working directory is ``stock_app``, the following command then runs the Web app::
+
+    python run_stock_app.py
 
     import os
 
@@ -89,4 +97,18 @@ All these files should be placed in the following folder structure:
         for f in files:
             print f
 
+You should now be able to access the Web application via::
 
+    http://xx.yy.zz.100:8888
+
+or::
+
+    http://rpi.mydomain.net:8888
+
+The **starting/main page** for the data input might then look like (here the app is run locally):
+
+.. image:: stock_app_main.png
+
+The **results output page** like this:
+
+.. image:: stock_app_results.png
