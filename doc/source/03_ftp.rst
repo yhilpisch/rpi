@@ -28,4 +28,6 @@ Third, generate a user as follows::
 
 Change ``ftp`` and ``/home/ftp`` to a user name and directory of your liking. Choose a password for the new user.
 
-Using a FTP client, you can now connect to your RPi and, for example, store files on it. You can also ``ssh`` connect to the RPi using the new user credentials. 
+Using a **FTP client**, you can now connect to your RPi and, for example, store files on it. You can also ``ssh`` connect to the RPi using the new user credentials.
+
+Generally SD cards hosting the OS of the RPi and serving as file/data storage are of course not that large. But investing e.g. **50 EUR for a 500 GB external USB drive** and connecting such a drive to the RPi is a simple way of using the RPi as a serious ``ftp`` server. 

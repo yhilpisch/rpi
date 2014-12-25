@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% macro render_field(field) %}
+  <dd>{{ field.label }}
+  <dd>{{ field(**kwargs)|safe }}
+  {% if field.errors %}
+    <ul class=errors>
+    {% for error in field.errors %}
+      <dd>{{ error }}</dd>
+    {% endfor %}
+    </ul>
+  {% endif %}
+  </dd>
+{% endmacro %}
+
+{% block body %}
+
+  <form action="{{ url_for('main') }}" method=post
+   enctype="multipart/form-data">
+    <dl>
+      <dd><h2>Search for a Ticker Symbol</h2><br>
+
+      <dd>{{ render_field( form.symbol ) }}</dd><br>
+      <dd>{{ render_field( form.trend1 ) }}</dd><br>
+      <dd>{{ render_field( form.trend2 ) }}</dd><br>
+      <dd>{{ render_field( form.submit ) }}</dd><br>
+
+    </dl>
+  </form>
+
+{% endblock %}

@@ -1,0 +1,92 @@
+
+Web Apps with Raspberry Pi
+-------------------------------
+
+Having implemented the small project about data analytics with Python, we are now well equipped to do something useful with the data analytics capabilities. In particular, we want to build a small **Web app** that serves a page where you can decide on a ticker symbol and you get back historical stock price data for that symbol.
+
+The framework we are going to use is called **Flask** (cf. http://flask.pocoo.org/) and has become quite popular recently in the Python world. Installation in this case is straightforward::
+
+    sudo pip install Flask
+    sudo pip install flask-wtf
+
+To get our Web app to be build served, we need a **Web server**. A popular choice in the Python world is **Tornado** (cf. http://www.tornadoweb.org/en/stable/). Install it via::
+
+    sudo pip install tornado
+
+This should also be quick and straightforward. This is almost all we need to use the RPi as a Web server for Web sites or applications.
+
+A First Example
+^^^^^^^^^^^^^^^^^^
+
+Let us see if we can implement the **"Hello World!" example** of Flask and get it served with Tornado. First the Web app itself:
+
+.. literalinclude:: flask_test.py
+
+As you see, a few lines of code suffice for a propor Web application---even if it is only a very small one. The :download:`download link<./flask_test.py>` for this Python module.
+
+Next, we need to wrap the app into a **WSGI container** (cf. http://en.wikipedia.org/wiki/Web_Server_Gateway_Interface) to be served by Tornado:
+
+.. literalinclude:: web_serve.py
+
+Again only a few lines of code. The :download:`download link<./web_serve.py>` for this script. If you execute this last script via::
+
+    python web_serve.py
+
+you should be able to see the result when going to the fixed IP or domain of your RPi in combination with port 5000::
+
+    http://xx.yy.zz.100:5000
+
+or::
+
+    http://rpi.mydomain.net:5000
+
+
+Historical Stock Price Data
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This Web application retrieves historical stock price data for a user given **ticker symbol** and calculates **two different trends (moving averages)**. It then outputs a figure with the data and results as well as a HTML table with the raw data.
+
+Let us start with the Web app code itself:
+
+.. literalinclude:: ./stock_app/stock_data.py
+
+The :download:`download link<./stock_app/stock_data.py>` for this Python script.
+
+We need a simple WTF form for data input (:download:`download link<./stock_app//forms.py>`)
+
+.. literalinclude:: ./stock_app/forms.py
+
+
+The major layout template (:download:`download link<./stock_app/templates/layout.html>`:
+
+.. literalinclude:: ./stock_app/templates/layout.html
+    :language: html
+
+The sub-template for the data input (:download:`download link<./stock_app/templates/selection.html>`):
+
+.. literalinclude:: ./stock_app/templates/selection.html
+    :language: html
+
+And the sub-template for the results output (:download:`download link<./stock_app/templates/results.html>`):
+
+.. literalinclude:: ./stock_app/templates/results.html
+    :language: html
+
+Finally, a bit of CSS styling (:download:`download link<./stock_app/static/style.css>`)
+
+.. literalinclude:: ./stock_app/static/style.css
+    :language: css
+
+All these files should be placed in the following folder structure:
+
+.. ipython:: python
+
+
+    import os
+
+    for path, dirs, files in os.walk('./source/stock_app'):
+        print path
+        for f in files:
+            print f
+
+

@@ -27,6 +27,7 @@ And, oh wonder, this also takes quite a while to install and compile. We might w
 
     sudo pip install numexpr
     sudo pip install cython
+    sudo apt-get install libhdf5-serial-dev
     sudo pip install tables 
 
 All this taken together takes a few hours in total. However, your patience will pay off: your RPi will be equipped with **state-of-the-art Python-based data analytics libraries** that can be used then for a wide range of data collection, crunching and storage tasks. Finally, install the IPython interactive analytics environment::
@@ -105,8 +106,23 @@ When using the RPi for data collection purposes, it might be beneficial to have 
 
 .. literalinclude:: data_collection.py
 
-Here, the :download:`download link<./data_collection.py>` for the script. The data gathered by this Python script is not that large. The following script generates a set with pseudo-random sample data which is 80 MB in size and writes it to disk.
+Here, the :download:`download link<./data_collection.py>` for the script. Running the script from the shell yields an output like this::
+
+    pi@rpi ~ $ python data_collection.py 
+    Time needed to collect data in sec.  1.61
+    Time needed to store data in sec.    1.40
+
+
+The data gathered and stored by this Python script is not that large. The following script generates a set with pseudo-random sample data which is **80 MB in size** and writes it to disk.
 
 .. literalinclude:: large_data_set.py
 
-The :download:`download link<./large_data_set.py>` for this script.
+The :download:`download link<./large_data_set.py>` for this script. Running this script yields an output like follows::
+
+    pi@rpi ~ $ python large_data_set.py 
+    Size of data set in bytes 80000000
+    Time needed to generate data in sec. 10.24
+    Time needed to store data in sec.     9.39
+
+It takes less than 10 seconds to write 80 MB of data to the SD card (times here might vary significantly depending on the card type used). You see that you can even process **larger data sets** (although not "big data") with the  RPi.
+
