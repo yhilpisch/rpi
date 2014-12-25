@@ -70,7 +70,7 @@ You can further use the RPi with a monitor and keyboard connected or you can use
 Small Projects with the RPi
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Having set up the RPi (in particular for ``ssh`` access), you can now move on and implement one or more of the following smaller projects:
+Having set up the RPi, you can now move on and implement one or more of the following smaller projects. Ideally, you should **follow them in the sequence as listed below** since later projects assume (at least to some extent) that you have successfully finished earlier ones.
 
 The documentation is structured as follows:
 

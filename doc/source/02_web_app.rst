@@ -32,7 +32,7 @@ Again only a few lines of code. The :download:`download link<./web_serve.py>` fo
 
     python web_serve.py
 
-you should be able to see the result when going to the fixed IP or domain of your RPi in combination with port 5000::
+you should be able to see the result when going to the **fixed IP or domain of your RPi** in combination with port 5000 (cf. :ref:`fixip`)::
 
     http://xx.yy.zz.100:5000
 
@@ -86,10 +86,6 @@ All these files should be placed in the following folder structure:
 
 .. ipython:: python
 
-When the working directory is ``stock_app``, the following command then runs the Web app::
-
-    python run_stock_app.py
-
     import os
 
     for path, dirs, files in os.walk('./source/stock_app'):
@@ -97,7 +93,11 @@ When the working directory is ``stock_app``, the following command then runs the
         for f in files:
             print f
 
-You should now be able to access the Web application via::
+When the working directory is ``stock_app``, the following command then runs the Web app::
+
+    python run_stock_app.py
+
+You should now be able to access the Web application via (cf. :ref:`fixip`)::
 
     http://xx.yy.zz.100:8888
 
@@ -112,3 +112,17 @@ The **starting/main page** for the data input might then look like (here the app
 The **results output page** like this:
 
 .. image:: stock_app_results.png
+
+
+Generating Interactive D3 Plots
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Modern Web applications generally rely on nicely rendered, interactive graphics. The following example slightly adjusts the previous one to accomplish exaclty that. The main tool used here is **plotly** (cf. http://plot.ly), a graphics engine that allows to easily transform static Python/matplotlib plots into interactive **D3.js** plots (http://d3js.org/).
+
+You need to install plotly as follows::
+
+    sudo pip install plotly
+
+You also need to creat an account on the Web site http://plot.ly.
+
+

@@ -25,6 +25,8 @@ Later when you reconnect via ``ssh`` to the RPi you can reattach to your screen 
 
     screen -r
 
+.. _fixip:
+
 Fixed IP Address
 ~~~~~~~~~~~~~~~~~~~
 
