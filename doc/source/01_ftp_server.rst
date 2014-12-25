@@ -6,11 +6,11 @@ Setting up the RPi as an FTP server---over which you and you alone have full con
 
     sudo apt-get install proftpd
 
-Configure it to be "standalone". Second, edit the config file of the program as follows::
+Configure it to be "standalone". Second, **edit the config file** of the program as follows::
 
     sudo nano /etc/proftpd/proftpd.conf
 
-Add the following code::
+Add the following **parameters**::
 
     DefaultRoot         ~
     AuthOrder           mod_auth_file.c  mod_auth_unix.c
@@ -18,11 +18,11 @@ Add the following code::
     AuthPAM             off
     RequireValidShell   off
 
-Restart the service by::
+**Restart** the service by::
 
     sudo /etc/init.d/proftpd restart
 
-Third, generate a user as follows::
+Third, **generate a new user** as follows::
 
     sudo adduser ftp --home /home/ftp --shell /bin/bash
 

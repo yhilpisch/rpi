@@ -8,13 +8,17 @@
 Raspberry Pi for Serious Things
 -------------------------------
 
-This Web site and tutorial is about setting up and using the Raspberry Pi for some serious things. Among others, it covers:
+This Web site and tutorial is about setting up and using the Raspberry Pi for some serious things. Among others, it covers so far:
 
-* using the RPi as a Python calculator
-* using the RPi as ftp server
-* using the RPi with a Webcam for security applications
+* using the RPi via **SSH access** and a **fixed IP address**
+* using the RPi as **FTP server**
+* doing Python-based **data analytics** with the RPi
+* building and deploying **Web apps** on the RPi
 
 I assume that you have bought a RPi and all the equipment necessary to use it (power plug, etc.). It is recommended to start using the RPi connected to the Web via an Ethernet cable (for convenience and speed).
+
+Several topics and projects of this tutorial are also interesting for those not (yet) having a RPi but having available or being willing to rent a (small) **cloud server instance** e.g. from **DigitalOcean**. These start at **5 USD per month** for a 1 core, 512 MB, 20 GB SSD configuration. Just follow this link to **register**: https://www.digitalocean.com/?refcode=fbe512dd3dac.
+
 
 Setting up the RPi
 ~~~~~~~~~~~~~~~~~~~~
@@ -77,10 +81,10 @@ The documentation is structured as follows:
 .. toctree::
    :maxdepth: 2
 
-   00_ssh
-   01_ipython
-   02_web_app
-   03_ftp
+   00_basic_config
+   01_ftp_server
+   02_data_analytics
+   03_web_apps
 
 
 About the Author
@@ -110,7 +114,7 @@ http://twitter.com/dyjh
 **Python Quant Platform** \| http://quant-platform.com
 
 **Derivatives Analytics with Python (Wiley Finance)** \|
-http://derivatives-analytics-with-python.com
+http://eu.wiley.com/WileyCDA/WileyTitle/productCd-1119037999.html
 
 **Python for Finance (O'Reilly)** \|
 http://shop.oreilly.com/product/0636920032441.do

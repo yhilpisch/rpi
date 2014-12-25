@@ -1,4 +1,6 @@
 
+.. _web_apps:
+
 Web Apps with Raspberry Pi
 -------------------------------
 
@@ -108,10 +110,12 @@ or::
 The **starting/main page** for the data input might then look like (here the app is run locally):
 
 .. image:: stock_app_main.png
+    :scale: 66%
 
 The **results output page** looks like this:
 
 .. image:: stock_app_results.png
+    :scale: 66%
 
 
 Generating Interactive D3 Plots
@@ -150,3 +154,4 @@ Everything else remains the same. Your **folder structure** should now look like
 If everything runs as desired, the **results page** of the interactive version should look like below (here the app runs locally):
 
 .. image:: stock_app_plotly.png
+    :scale: 66%

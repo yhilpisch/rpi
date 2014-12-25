@@ -9,21 +9,21 @@ This example is about data analytics with Python (cf. http://python.org) and IPy
 Installing Data Analytics Libraries
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Any serious data analytics effort with Python generally includes to some extent the pandas library (cf. http://pandas.pydata.org). To install it, upgrade the NumPy library first (cf. http://scipy.org)::
+Any serious data analytics effort with Python generally includes to some extent the **pandas** library (cf. http://pandas.pydata.org). To install it, **upgrade the NumPy** library first (cf. http://scipy.org)::
 
     sudo pip install numpy --upgrade
 
-This might take quite a while (1h+) due to the library being pretty large and the RPi not being that quick in compiling it. Then install pandas::
+This might take quite a while (1h+) due to the library being pretty large and the RPi not being that quick in compiling it. Then **install pandas**::
 
     sudo pip install pandas
 
-This also takes some time (again 1h+). Also install the matplotlib plotting library (with some updates/dependencies) as follows::
+This also takes some time (again 1h+). Also install the **matplotlib** plotting library (with some updates/dependencies) as follows::
 
     sudo easy_install -U distribute
     sudo apt-get install libpng-dev libjpeg8-dev libfreetype6-dev
     sudo pip install matplotlib
 
-And, oh wonder, this also takes quite a while to install and compile. We might want to install another useful library, namely PyTables (cf. http://pytables.org) for efficient I/O with Python::
+And, oh wonder, this also takes quite a while to install and compile. We might want to install another useful library, namely **PyTables** (cf. http://pytables.org) for efficient I/O with Python::
 
     sudo pip install numexpr
     sudo pip install cython
@@ -37,7 +37,7 @@ All this taken together takes a few hours in total. However, your patience will 
 Interactive Data Analytics
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Now start IPython on the shell via::
+Now **start IPython** on the shell via::
 
     ipython
 
@@ -55,7 +55,7 @@ You should then see something like::
 
     In [1]: 
 
-Now let's retrieve some stock quotes for Apple stocks:
+Now let's retrieve some **stock quotes for the Apple stock**:
 
 .. ipython::
 
@@ -74,7 +74,7 @@ Now let's retrieve some stock quotes for Apple stocks:
     2014-12-22  112.16  113.49  111.97  112.94  44976200     112.94
 
 
-Next, let us caculate two different moving averages (42 days & 252 days):
+Next, let us caculate two different **moving averages** (42 days & 252 days):
 
 .. ipython::
 
@@ -93,31 +93,31 @@ Finally, a plot of the index closing values and the moving averages:
     In [8]: aapl[['Adj Close', '42d', '252d']].plot(title='Apple Inc.'); plt.savefig('source/aapl.png')
 
 
-The saved png plot might then look like below.
+The **saved png plot** might then look like below.
 
 .. image:: aapl.png
 
-Via the shell (either directly or via ``ssh`` access) such figures cannot be displayed. However, you could imagine to run a Web site on the RPi where the figure is included and displayed via html. You could also send such a graphical output/result e.g. by email.
+Via the shell (either directly or via ``ssh`` access) such figures cannot be displayed. However, you could imagine to run a Web site on the RPi where the figure is included and displayed via html (see :ref:`web_apps`). You could also send such a graphical output/result to yourself or someone else e.g. by email or FTP transfer.
 
 Fast I/O Operations
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-When using the RPi for data collection purposes, it might be beneficial to have efficient I/O capabilities available. This is where the PyTables library comes into play. The following is a Python script that collects stock data for a number of symbols and stores the data on disk in HDF5 format (cf. http://hdfgroup.org).
+When using the RPi for data collection purposes, it might be beneficial to have efficient I/O capabilities available. This is where the PyTables library comes into play. The following is a Python script (:download:`download link<./data_collection.py>`) that collects stock data for a number of symbols and stores the data on disk in HDF5 format (cf. http://hdfgroup.org).
 
 .. literalinclude:: data_collection.py
 
-Here, the :download:`download link<./data_collection.py>` for the script. Running the script from the shell yields an output like this::
+Running the script from the shell yields an output like this::
 
     pi@rpi ~ $ python data_collection.py 
     Time needed to collect data in sec.  1.61
     Time needed to store data in sec.    1.40
 
 
-The data gathered and stored by this Python script is not that large. The following script generates a set with pseudo-random sample data which is **80 MB in size** and writes it to disk.
+The data gathered and stored by this Python script is not that large. The following script (:download:`download link<./large_data_set.py>`) generates a set with pseudo-random sample data which is **80 MB in size** and writes it to disk.
 
 .. literalinclude:: large_data_set.py
 
-The :download:`download link<./large_data_set.py>` for this script. Running this script yields an output like follows::
+Running this script yields an output like follows::
 
     pi@rpi ~ $ python large_data_set.py 
     Size of data set in bytes 80000000
@@ -125,4 +125,3 @@ The :download:`download link<./large_data_set.py>` for this script. Running this
     Time needed to store data in sec.     9.39
 
 It takes less than 10 seconds to write 80 MB of data to the SD card (times here might vary significantly depending on the card type used). You see that you can even process **larger data sets** (although not "big data") with the  RPi.
-
