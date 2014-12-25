@@ -1,6 +1,8 @@
 #
 # Historical Stock Prices
-# with the RPi using Python & Flask
+# with the RPi using Python & Flask & Plotly
+#
+# stock_interactive.py
 #
 # (c) Dr. Yves J. Hilpisch
 # The Python Quants

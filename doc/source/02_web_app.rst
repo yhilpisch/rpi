@@ -82,7 +82,7 @@ Finally, the **Tornado WSGI wrapper** for the app (:download:`download link<./st
 .. literalinclude:: ./stock_app/run_stock_app.py
 
 
-All these files should be placed in the following folder structure:
+All these files should be placed in the following **folder structure**:
 
 .. ipython:: python
 
@@ -109,20 +109,44 @@ The **starting/main page** for the data input might then look like (here the app
 
 .. image:: stock_app_main.png
 
-The **results output page** like this:
+The **results output page** looks like this:
 
 .. image:: stock_app_results.png
 
 
 Generating Interactive D3 Plots
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Modern Web applications generally rely on nicely rendered, interactive graphics. The following example slightly adjusts the previous one to accomplish exaclty that. The main tool used here is **plotly** (cf. http://plot.ly), a graphics engine that allows to easily transform static Python/matplotlib plots into interactive **D3.js** plots (http://d3js.org/).
 
-You need to install plotly as follows::
+You need to **install plotly** as follows::
 
     sudo pip install plotly
 
-You also need to creat an account on the Web site http://plot.ly.
+You also need to create an account on the Web site http://plot.ly.
 
+The major **changes** have be made in the main application module (:download:`download link<./stock_int/stock_interactive.py>`):
 
+.. literalinclude:: ./stock_int/stock_interactive.py
+
+We also need to **adjust the results output template file** (:download:`download link<./stock_int/templates/plotly.html>`):
+
+.. literalinclude:: ./stock_int/templates/plotly.html
+    :language: html
+
+Also, the **WSGI wrapping** is to be adjusted slightly (:download:`download link<./stock_int/run_stock_int.py>`):
+
+.. literalinclude:: ./stock_int/run_stock_int.py
+
+Everything else remains the same. Your **folder structure** should now look like follows:
+
+.. ipython:: python
+
+    for path, dirs, files in os.walk('./source/stock_int'):
+        print path
+        for f in files:
+            print f
+
+If everything runs as desired, the **results page** of the interactive version should look like below (here the app runs locally):
+
+.. image:: stock_app_plotly.png

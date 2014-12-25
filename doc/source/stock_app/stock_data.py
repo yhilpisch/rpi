@@ -2,6 +2,8 @@
 # Historical Stock Prices
 # with the RPi using Python & Flask
 #
+# stock_data.py
+#
 # (c) Dr. Yves J. Hilpisch
 # The Python Quants
 #
