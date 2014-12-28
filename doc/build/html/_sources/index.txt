@@ -23,27 +23,27 @@ Several topics and projects of this tutorial are also interesting for those not 
 Setting up the RPi
 ~~~~~~~~~~~~~~~~~~~~
 
-The first step is to build a bootable SD card for the RPi. We will use a **Raspbian Debian Wheezy** image in the  following which you can download here: http://www.raspberrypi.org/downloads/.
+The first step is to build a bootable SD card for the RPi. We will use a **Raspbian Debian Wheezy** operating system (OS) image in the following which you can download here: http://www.raspberrypi.org/downloads/.
 
-Using a Mac, you can do the following to write the downloaded image to the  SD card. First, insert the SD card. On the shell type::
+Using a **Mac**, you can do the following to write the downloaded image to the  SD card. First, insert the SD card. On the shell type::
 
     diskutil list
 
-Using Linux (eg Ubuntu), type::
+Using **Linux** (eg Ubuntu), type::
 
     df -h
 
 This gives you a list of all disk drives. Identify the SD card with a name like ``diskX``.
 
-Then unmount the SD card on the Mac as follows::
+Then unmount the SD card on the **Mac** as follows::
 
     diskutil unmountDisk /dev/diskX
 
-Under Linux do::
+Under **Linux** do::
 
     umount /dev/diskX
 
-The next step is to write the OS image to the SD card::
+The next step---both on Mac/Linux---is to **write the OS image** to the SD card::
 
     sudo dd bs=1m if=os-image.img of=/dev/diskX
 
@@ -52,23 +52,23 @@ Here, replace the image name and the disk name with those that apply for you.
 Booting the RPi
 ~~~~~~~~~~~~~~~~~
 
-You should connect a monitor via a HDMI cable to the RPi and a keyboard via USB (I am using a keyboard and mouse, both connected via the same USB token). Put the SD card into the RPi and connect it to the power plug. It should now boot.
+You should connect a **monitor** via a HDMI cable to the RPi and a **keyboard** via USB (I am using a keyboard and mouse, both connected via the same USB token). Put the SD card into the RPi and connect it to the power plug. It should now **boot**.
 
 You will be directed to an options screen where you can do different things, like for example:
 
-* expand the file system to use the full capacity of your SD card (which you should do)
-* change the root/pi password (which I assume in the following you do not do)
-* enable SSH access (via Advanced Options, which you should do)
+* **expand the file system** to use the full capacity of your SD card (which you should do)
+* **change the root/pi password** (which I assume in the following you do not do)
+* **enable SSH access** (via Advanced Options, which you should do)
 
-After finishing the options setting procedure, the RPi has to re-boot. Once rebooted, you should login as user ``pi`` with password ``raspberry`` (if not changed before). The type::
+After finishing the options setting procedure, the RPi has to **re-boot**. Once rebooted, you should login as user ``pi`` with password ``raspberry`` (if not changed before). Then type::
 
     sudo apt-get update
 
-This might  take a while. After that, upgrade you system with::
+This might take a while. After that, upgrade your system with::
 
     sudo apt-get upgrade
 
-You can further use the RPi with a monitor and keyboard connected or you can use it via ``ssh`` access as one of the small projects explains.
+From here on, you can further use the RPi with a monitor and keyboard connected or you can use it via ``ssh`` access as one of the small projects explains.
 
 
 Small Projects with the RPi
@@ -85,6 +85,7 @@ The documentation is structured as follows:
    01_ftp_server
    02_data_analytics
    03_web_apps
+   04_git_server
 
 
 About the Author

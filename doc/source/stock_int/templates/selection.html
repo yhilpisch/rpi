@@ -16,10 +16,13 @@
 
 {% block body %}
 
+  <div class="form">
   <form action="{{ url_for('main') }}" method=post
    enctype="multipart/form-data">
     <dl>
-      <dd><h2>Search for a Ticker Symbol</h2><br>
+      <dd><h1>Search for a Ticker Symbol</h1></dd><br>
+
+      <dd>Data will be retrieved from Yahoo! Finance.<br>Make sure to use a valid ticker symbol.</dd><br><br>
 
       <dd>{{ render_field( form.symbol ) }}</dd><br>
       <dd>{{ render_field( form.trend1 ) }}</dd><br>
@@ -28,5 +31,6 @@
 
     </dl>
   </form>
+  </div>
 
 {% endblock %}

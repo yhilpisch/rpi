@@ -4,6 +4,8 @@ Basic Configurations
 
 This section is about some basic, useful configurations of the RPi.
 
+.. _ssh_access::
+
 SSH Access
 ~~~~~~~~~~~~~~
 

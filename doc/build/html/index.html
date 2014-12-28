@@ -10,8 +10,6 @@
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-<link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -61,25 +59,25 @@
 <p>Several topics and projects of this tutorial are also interesting for those not (yet) having a RPi but having available or being willing to rent a (small) <strong>cloud server instance</strong> e.g. from <strong>DigitalOcean</strong>. These start at <strong>5 USD per month</strong> for a 1 core, 512 MB, 20 GB SSD configuration. Just follow this link to <strong>register</strong>: <a class="reference external" href="https://www.digitalocean.com/?refcode=fbe512dd3dac">https://www.digitalocean.com/?refcode=fbe512dd3dac</a>.</p>
 <div class="section" id="setting-up-the-rpi">
 <h2>Setting up the RPi<a class="headerlink" href="#setting-up-the-rpi" title="Permalink to this headline">¶</a></h2>
-<p>The first step is to build a bootable SD card for the RPi. We will use a <strong>Raspbian Debian Wheezy</strong> image in the  following which you can download here: <a class="reference external" href="http://www.raspberrypi.org/downloads/">http://www.raspberrypi.org/downloads/</a>.</p>
-<p>Using a Mac, you can do the following to write the downloaded image to the  SD card. First, insert the SD card. On the shell type:</p>
+<p>The first step is to build a bootable SD card for the RPi. We will use a <strong>Raspbian Debian Wheezy</strong> operating system (OS) image in the following which you can download here: <a class="reference external" href="http://www.raspberrypi.org/downloads/">http://www.raspberrypi.org/downloads/</a>.</p>
+<p>Using a <strong>Mac</strong>, you can do the following to write the downloaded image to the  SD card. First, insert the SD card. On the shell type:</p>
 <div class="highlight-python"><div class="highlight"><pre>diskutil list
 </pre></div>
 </div>
-<p>Using Linux (eg Ubuntu), type:</p>
+<p>Using <strong>Linux</strong> (eg Ubuntu), type:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">df</span> <span class="o">-</span><span class="n">h</span>
 </pre></div>
 </div>
 <p>This gives you a list of all disk drives. Identify the SD card with a name like <tt class="docutils literal"><span class="pre">diskX</span></tt>.</p>
-<p>Then unmount the SD card on the Mac as follows:</p>
+<p>Then unmount the SD card on the <strong>Mac</strong> as follows:</p>
 <div class="highlight-python"><div class="highlight"><pre>diskutil unmountDisk /dev/diskX
 </pre></div>
 </div>
-<p>Under Linux do:</p>
+<p>Under <strong>Linux</strong> do:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">umount</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">diskX</span>
 </pre></div>
 </div>
-<p>The next step is to write the OS image to the SD card:</p>
+<p>The next step&#8212;both on Mac/Linux&#8212;is to <strong>write the OS image</strong> to the SD card:</p>
 <div class="highlight-python"><div class="highlight"><pre>sudo dd bs=1m if=os-image.img of=/dev/diskX
 </pre></div>
 </div>
@@ -87,22 +85,22 @@
 </div>
 <div class="section" id="booting-the-rpi">
 <h2>Booting the RPi<a class="headerlink" href="#booting-the-rpi" title="Permalink to this headline">¶</a></h2>
-<p>You should connect a monitor via a HDMI cable to the RPi and a keyboard via USB (I am using a keyboard and mouse, both connected via the same USB token). Put the SD card into the RPi and connect it to the power plug. It should now boot.</p>
+<p>You should connect a <strong>monitor</strong> via a HDMI cable to the RPi and a <strong>keyboard</strong> via USB (I am using a keyboard and mouse, both connected via the same USB token). Put the SD card into the RPi and connect it to the power plug. It should now <strong>boot</strong>.</p>
 <p>You will be directed to an options screen where you can do different things, like for example:</p>
 <ul class="simple">
-<li>expand the file system to use the full capacity of your SD card (which you should do)</li>
-<li>change the root/pi password (which I assume in the following you do not do)</li>
-<li>enable SSH access (via Advanced Options, which you should do)</li>
+<li><strong>expand the file system</strong> to use the full capacity of your SD card (which you should do)</li>
+<li><strong>change the root/pi password</strong> (which I assume in the following you do not do)</li>
+<li><strong>enable SSH access</strong> (via Advanced Options, which you should do)</li>
 </ul>
-<p>After finishing the options setting procedure, the RPi has to re-boot. Once rebooted, you should login as user <tt class="docutils literal"><span class="pre">pi</span></tt> with password <tt class="docutils literal"><span class="pre">raspberry</span></tt> (if not changed before). The type:</p>
+<p>After finishing the options setting procedure, the RPi has to <strong>re-boot</strong>. Once rebooted, you should login as user <tt class="docutils literal"><span class="pre">pi</span></tt> with password <tt class="docutils literal"><span class="pre">raspberry</span></tt> (if not changed before). Then type:</p>
 <div class="highlight-python"><div class="highlight"><pre>sudo apt-get update
 </pre></div>
 </div>
-<p>This might  take a while. After that, upgrade you system with:</p>
+<p>This might take a while. After that, upgrade your system with:</p>
 <div class="highlight-python"><div class="highlight"><pre>sudo apt-get upgrade
 </pre></div>
 </div>
-<p>You can further use the RPi with a monitor and keyboard connected or you can use it via <tt class="docutils literal"><span class="pre">ssh</span></tt> access as one of the small projects explains.</p>
+<p>From here on, you can further use the RPi with a monitor and keyboard connected or you can use it via <tt class="docutils literal"><span class="pre">ssh</span></tt> access as one of the small projects explains.</p>
 </div>
 <div class="section" id="small-projects-with-the-rpi">
 <h2>Small Projects with the RPi<a class="headerlink" href="#small-projects-with-the-rpi" title="Permalink to this headline">¶</a></h2>
@@ -126,6 +124,12 @@
 <li class="toctree-l2"><a class="reference internal" href="03_web_apps.html#a-first-example">A First Example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="03_web_apps.html#historical-stock-price-data">Historical Stock Price Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="03_web_apps.html#generating-interactive-d3-plots">Generating Interactive D3 Plots</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="04_git_server.html">Git Server with Raspberry Pi</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="04_git_server.html#using-a-usb-storage-device">Using a USB Storage Device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_git_server.html#remote-repository-on-the-rpi">Remote Repository on the RPi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_git_server.html#generating-local-git-repository">Generating Local Git Repository</a></li>
 </ul>
 </li>
 </ul>

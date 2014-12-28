@@ -48,7 +48,7 @@ app = Flask(__name__)
 @app.route("/", methods=['GET', 'POST'])
 def main():
     form = SymbolSearch(csrf_enabled=False)
-    if request.method == 'POST':
+    if request.method == 'POST' and form.validate():
         return redirect(url_for('results', symbol=request.form['symbol'],
                             trend1=request.form['trend1'],
                             trend2=request.form['trend2']))
@@ -66,7 +66,7 @@ def results(symbol, trend1, trend2):
     fig = Figure(data=df_to_plotly(data[['Adj Close', 'Trend 1', 'Trend 2']]),
                 layout=layout)
     plot = ply.plot(fig, auto_open=False)
-    table = data.to_html()
+    table = data.tail().to_html()
     return render_template('plotly.html', symbol=symbol,
                             plot=plot, table=table)
 

@@ -10,8 +10,6 @@
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-<link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -27,6 +25,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="top" title="Raspberry Pi for Serious Things" href="index.html" />
+    <link rel="next" title="Git Server with Raspberry Pi" href="04_git_server.html" />
     <link rel="prev" title="Raspberry Pi for Data Analytics" href="02_data_analytics.html" /> 
   </head>
   <body>
@@ -36,6 +35,9 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="04_git_server.html" title="Git Server with Raspberry Pi"
+             accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="02_data_analytics.html" title="Raspberry Pi for Data Analytics"
              accesskey="P">previous</a> |</li>
@@ -129,7 +131,7 @@ sudo pip install flask-wtf
 <span class="nd">@app.route</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;GET&#39;</span><span class="p">,</span> <span class="s">&#39;POST&#39;</span><span class="p">])</span>
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="n">form</span> <span class="o">=</span> <span class="n">SymbolSearch</span><span class="p">(</span><span class="n">csrf_enabled</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">&#39;POST&#39;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">&#39;POST&#39;</span> <span class="ow">and</span> <span class="n">form</span><span class="o">.</span><span class="n">validate</span><span class="p">():</span>
         <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s">&#39;results&#39;</span><span class="p">,</span> <span class="n">symbol</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s">&#39;symbol&#39;</span><span class="p">],</span>
                             <span class="n">trend1</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s">&#39;trend1&#39;</span><span class="p">],</span>
                             <span class="n">trend2</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s">&#39;trend2&#39;</span><span class="p">]))</span>
@@ -143,7 +145,7 @@ sudo pip install flask-wtf
     <span class="n">data</span><span class="p">[[</span><span class="s">&#39;Adj Close&#39;</span><span class="p">,</span> <span class="s">&#39;Trend 1&#39;</span><span class="p">,</span> <span class="s">&#39;Trend 2&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
     <span class="n">output</span> <span class="o">=</span> <span class="s">&#39;results.png&#39;</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s">&#39;static/&#39;</span> <span class="o">+</span> <span class="n">output</span><span class="p">)</span>
-    <span class="n">table</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">to_html</span><span class="p">()</span>
+    <span class="n">table</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span><span class="o">.</span><span class="n">to_html</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s">&#39;results.html&#39;</span><span class="p">,</span> <span class="n">symbol</span><span class="o">=</span><span class="n">symbol</span><span class="p">,</span>
                             <span class="n">output</span><span class="o">=</span><span class="n">output</span><span class="p">,</span> <span class="n">table</span><span class="o">=</span><span class="n">table</span><span class="p">)</span>
 
@@ -165,10 +167,13 @@ sudo pip install flask-wtf
 <span class="kn">from</span> <span class="nn">flask.ext.wtf</span> <span class="kn">import</span> <span class="n">Form</span>
 
 <span class="k">class</span> <span class="nc">SymbolSearch</span><span class="p">(</span><span class="n">Form</span><span class="p">):</span>
-    <span class="n">symbol</span> <span class="o">=</span> <span class="n">TextField</span><span class="p">(</span><span class="s">&#39;Symbol&#39;</span><span class="p">,</span> <span class="n">validators</span><span class="o">=</span><span class="p">[</span><span class="n">DataRequired</span><span class="p">,])</span>
-    <span class="n">trend1</span> <span class="o">=</span> <span class="n">TextField</span><span class="p">(</span><span class="s">&#39;Trend 1&#39;</span><span class="p">,</span> <span class="n">validators</span><span class="o">=</span><span class="p">[</span><span class="n">DataRequired</span><span class="p">,])</span>
-    <span class="n">trend2</span> <span class="o">=</span> <span class="n">TextField</span><span class="p">(</span><span class="s">&#39;Trend 2&#39;</span><span class="p">,</span> <span class="n">validators</span><span class="o">=</span><span class="p">[</span><span class="n">DataRequired</span><span class="p">,])</span>
-    <span class="n">submit</span> <span class="o">=</span> <span class="n">SubmitField</span><span class="p">(</span><span class="s">&#39;Search&#39;</span><span class="p">)</span>
+    <span class="n">symbol</span> <span class="o">=</span> <span class="n">TextField</span><span class="p">(</span><span class="s">&#39;&lt;b&gt;Symbol&lt;/b&gt; (eg AAPL, MSFT)&#39;</span><span class="p">,</span>
+                        <span class="n">validators</span><span class="o">=</span><span class="p">[</span><span class="n">DataRequired</span><span class="p">()])</span>
+    <span class="n">trend1</span> <span class="o">=</span> <span class="n">TextField</span><span class="p">(</span><span class="s">&#39;&lt;b&gt;Trend 1&lt;/b&gt; (eg 20, 42)&#39;</span><span class="p">,</span>
+                        <span class="n">validators</span><span class="o">=</span><span class="p">[</span><span class="n">DataRequired</span><span class="p">()])</span>
+    <span class="n">trend2</span> <span class="o">=</span> <span class="n">TextField</span><span class="p">(</span><span class="s">&#39;&lt;b&gt;Trend 2&lt;/b&gt; (eg 100, 252)&#39;</span><span class="p">,</span>
+                        <span class="n">validators</span><span class="o">=</span><span class="p">[</span><span class="n">DataRequired</span><span class="p">()])</span>
+    <span class="n">submit</span> <span class="o">=</span> <span class="n">SubmitField</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>The major <strong>layout template</strong> (<a class="reference download internal" href="_downloads/layout.html"><tt class="xref download docutils literal"><span class="pre">download</span> <span class="pre">link</span></tt></a>:</p>
@@ -196,7 +201,7 @@ sudo pip install flask-wtf
   <span class="nt">&lt;/div&gt;</span>
   
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">metanav</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;{{ url_for(&#39;main&#39;)}}&quot;</span><span class="nt">&gt;</span>main<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;{{ url_for(&#39;main&#39;)}}&quot;</span><span class="nt">&gt;</span>back to search<span class="nt">&lt;/a&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
   {% block body %}
 
@@ -223,10 +228,13 @@ sudo pip install flask-wtf
 
 {% block body %}
 
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">&quot;{{ url_for(&#39;main&#39;) }}&quot;</span> <span class="na">method=</span><span class="s">post</span>
    <span class="na">enctype=</span><span class="s">&quot;multipart/form-data&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;dl&gt;</span>
-      <span class="nt">&lt;dd&gt;&lt;h2&gt;</span>Search for a Ticker Symbol<span class="nt">&lt;/h2&gt;&lt;br&gt;</span>
+      <span class="nt">&lt;dd&gt;&lt;h1&gt;</span>Search for a Ticker Symbol<span class="nt">&lt;/h1&gt;&lt;/dd&gt;&lt;br&gt;</span>
+
+      <span class="nt">&lt;dd&gt;</span>Data will be retrieved from Yahoo! Finance.<span class="nt">&lt;br&gt;</span>Make sure to use a valid ticker symbol.<span class="nt">&lt;/dd&gt;&lt;br&gt;&lt;br&gt;</span>
 
       <span class="nt">&lt;dd&gt;</span>{{ render_field( form.symbol ) }}<span class="nt">&lt;/dd&gt;&lt;br&gt;</span>
       <span class="nt">&lt;dd&gt;</span>{{ render_field( form.trend1 ) }}<span class="nt">&lt;/dd&gt;&lt;br&gt;</span>
@@ -235,6 +243,7 @@ sudo pip install flask-wtf
 
     <span class="nt">&lt;/dl&gt;</span>
   <span class="nt">&lt;/form&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
 
 {% endblock %}
 </pre></div>
@@ -248,7 +257,7 @@ sudo pip install flask-wtf
 
     <span class="nt">&lt;h1&gt;</span>Results for Symbol {{ symbol }}<span class="nt">&lt;/h1&gt;</span>
 
-    <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;{{ url_for(&#39;static&#39;, filename=&#39;results.png&#39;) }}&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;img</span> <span class="na">width=</span><span class="s">100%</span> <span class="na">src=</span><span class="s">&quot;{{ url_for(&#39;static&#39;, filename=&#39;results.png&#39;) }}&quot;</span><span class="nt">&gt;</span>
 
     <span class="nt">&lt;br&gt;&lt;br&gt;</span>
 
@@ -273,10 +282,16 @@ sudo pip install flask-wtf
 
 <span class="nc">.page</span> <span class="p">{</span> <span class="k">font-family</span><span class="o">:</span> <span class="s1">&#39;PT Sans&#39;</span><span class="o">,</span> <span class="k">sans-serif</span><span class="p">;</span> <span class="k">margin</span><span class="o">:</span> <span class="m">2em</span> <span class="k">auto</span><span class="p">;</span> <span class="k">width</span><span class="o">:</span> <span class="m">66em</span><span class="p">;</span> 
                   <span class="k">padding</span><span class="o">:</span> <span class="m">0.8em</span><span class="p">;</span> <span class="k">background</span><span class="o">:</span> <span class="nb">white</span><span class="p">;</span> <span class="k">color</span><span class="o">:</span> <span class="m">#021A80</span><span class="p">}</span>
-<span class="nc">.metanav</span> <span class="p">{</span> <span class="k">text-align</span><span class="o">:</span> <span class="k">right</span><span class="p">;</span> <span class="k">font-size</span><span class="o">:</span> <span class="m">0.8em</span><span class="p">;</span> <span class="k">padding</span><span class="o">:</span> <span class="m">0.3em</span><span class="p">;</span>
+
+<span class="nc">.metanav</span> <span class="p">{</span> <span class="k">text-align</span><span class="o">:</span> <span class="k">right</span><span class="p">;</span> <span class="k">font-size</span><span class="o">:</span> <span class="m">1em</span><span class="p">;</span> <span class="k">padding</span><span class="o">:</span> <span class="m">0.3em</span><span class="p">;</span>
                   <span class="k">margin-bottom</span><span class="o">:</span> <span class="m">1em</span><span class="p">;</span> <span class="k">background</span><span class="o">:</span> <span class="m">#fafafa</span><span class="p">;</span> <span class="p">}</span>
+
 <span class="nc">.logo</span> <span class="nt">img</span> <span class="p">{</span> <span class="k">width</span><span class="o">:</span> <span class="m">30</span><span class="o">%</span><span class="p">;</span> <span class="k">display</span><span class="o">:</span> <span class="k">block</span><span class="p">;</span> <span class="k">margin-right</span><span class="o">:</span> <span class="k">auto</span><span class="p">;</span>
             <span class="k">margin-left</span><span class="o">:</span> <span class="k">auto</span><span class="p">;</span> <span class="p">}</span>
+
+<span class="nc">.errors</span> <span class="p">{</span> <span class="k">font-size</span><span class="o">:</span> <span class="m">0.8em</span><span class="p">;</span> <span class="k">color</span><span class="o">:</span> <span class="nb">red</span><span class="p">;}</span>
+
+<span class="nc">.form</span> <span class="p">{</span><span class="k">text-align</span><span class="o">:</span> <span class="k">center</span><span class="p">;}</span>
 </pre></div>
 </div>
 <p>Finally, the <strong>Tornado WSGI wrapper</strong> for the app (<a class="reference download internal" href="_downloads/run_stock_app.py"><tt class="xref download docutils literal"><span class="pre">download</span> <span class="pre">link</span></tt></a>):</p>
@@ -306,9 +321,12 @@ sudo pip install flask-wtf
 <span class="gp">   ...: </span>
 <span class="go">./source/stock_app</span>
 <span class="go">forms.py</span>
+<span class="go">forms.pyc</span>
 <span class="go">run_stock_app.py</span>
 <span class="go">stock_data.py</span>
+<span class="go">stock_data.pyc</span>
 <span class="go">./source/stock_app/static</span>
+<span class="go">results.png</span>
 <span class="go">style.css</span>
 <span class="go">./source/stock_app/templates</span>
 <span class="go">layout.html</span>
@@ -329,9 +347,9 @@ sudo pip install flask-wtf
 </pre></div>
 </div>
 <p>The <strong>starting/main page</strong> for the data input might then look like (here the app is run locally):</p>
-<a class="reference internal image-reference" href="_images/stock_app_main.png"><img alt="_images/stock_app_main.png" src="_images/stock_app_main.png" style="width: 968.88px; height: 690.36px;" /></a>
+<a class="reference internal image-reference" href="_images/stock_app_main.png"><img alt="_images/stock_app_main.png" src="_images/stock_app_main.png" style="width: 856.02px; height: 529.98px;" /></a>
 <p>The <strong>results output page</strong> looks like this:</p>
-<a class="reference internal image-reference" href="_images/stock_app_results.png"><img alt="_images/stock_app_results.png" src="_images/stock_app_results.png" style="width: 968.88px; height: 690.36px;" /></a>
+<a class="reference internal image-reference" href="_images/stock_app_results.png"><img alt="_images/stock_app_results.png" src="_images/stock_app_results.png" style="width: 856.02px; height: 529.98px;" /></a>
 </div>
 <div class="section" id="generating-interactive-d3-plots">
 <h2>Generating Interactive D3 Plots<a class="headerlink" href="#generating-interactive-d3-plots" title="Permalink to this headline">¶</a></h2>
@@ -364,7 +382,7 @@ sudo pip install flask-wtf
 <span class="c"># Needed for plotly usage</span>
 <span class="c">#</span>
 
-<span class="n">ply</span><span class="o">.</span><span class="n">sign_in</span><span class="p">(</span><span class="s">&#39;yves&#39;</span><span class="p">,</span> <span class="s">&#39;token&#39;</span><span class="p">)</span>
+<span class="n">ply</span><span class="o">.</span><span class="n">sign_in</span><span class="p">(</span><span class="s">&#39;yves&#39;</span><span class="p">,</span> <span class="s">&#39;65p6tn4p8i&#39;</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">df_to_plotly</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
@@ -392,7 +410,7 @@ sudo pip install flask-wtf
 <span class="nd">@app.route</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;GET&#39;</span><span class="p">,</span> <span class="s">&#39;POST&#39;</span><span class="p">])</span>
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="n">form</span> <span class="o">=</span> <span class="n">SymbolSearch</span><span class="p">(</span><span class="n">csrf_enabled</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">&#39;POST&#39;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">&#39;POST&#39;</span> <span class="ow">and</span> <span class="n">form</span><span class="o">.</span><span class="n">validate</span><span class="p">():</span>
         <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s">&#39;results&#39;</span><span class="p">,</span> <span class="n">symbol</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s">&#39;symbol&#39;</span><span class="p">],</span>
                             <span class="n">trend1</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s">&#39;trend1&#39;</span><span class="p">],</span>
                             <span class="n">trend2</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s">&#39;trend2&#39;</span><span class="p">]))</span>
@@ -410,7 +428,7 @@ sudo pip install flask-wtf
     <span class="n">fig</span> <span class="o">=</span> <span class="n">Figure</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_to_plotly</span><span class="p">(</span><span class="n">data</span><span class="p">[[</span><span class="s">&#39;Adj Close&#39;</span><span class="p">,</span> <span class="s">&#39;Trend 1&#39;</span><span class="p">,</span> <span class="s">&#39;Trend 2&#39;</span><span class="p">]]),</span>
                 <span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">)</span>
     <span class="n">plot</span> <span class="o">=</span> <span class="n">ply</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">auto_open</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-    <span class="n">table</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">to_html</span><span class="p">()</span>
+    <span class="n">table</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span><span class="o">.</span><span class="n">to_html</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s">&#39;plotly.html&#39;</span><span class="p">,</span> <span class="n">symbol</span><span class="o">=</span><span class="n">symbol</span><span class="p">,</span>
                             <span class="n">plot</span><span class="o">=</span><span class="n">plot</span><span class="p">,</span> <span class="n">table</span><span class="o">=</span><span class="n">table</span><span class="p">)</span>
 
@@ -469,6 +487,7 @@ sudo pip install flask-wtf
 <span class="gp">   ...: </span>
 <span class="go">./source/stock_int</span>
 <span class="go">forms.py</span>
+<span class="go">forms.pyc</span>
 <span class="go">run_stock_int.py</span>
 <span class="go">stock_interactive.py</span>
 <span class="go">./source/stock_int/static</span>
@@ -480,7 +499,7 @@ sudo pip install flask-wtf
 </pre></div>
 </div>
 <p>If everything runs as desired, the <strong>results page</strong> of the interactive version should look like below (here the app runs locally):</p>
-<a class="reference internal image-reference" href="_images/stock_app_plotly.png"><img alt="_images/stock_app_plotly.png" src="_images/stock_app_plotly.png" style="width: 968.88px; height: 690.36px;" /></a>
+<a class="reference internal image-reference" href="_images/stock_app_plotly.png"><img alt="_images/stock_app_plotly.png" src="_images/stock_app_plotly.png" style="width: 856.02px; height: 529.98px;" /></a>
 </div>
 </div>
 
@@ -506,6 +525,9 @@ sudo pip install flask-wtf
   <h4>Previous topic</h4>
   <p class="topless"><a href="02_data_analytics.html"
                         title="previous chapter">Raspberry Pi for Data Analytics</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="04_git_server.html"
+                        title="next chapter">Git Server with Raspberry Pi</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/03_web_apps.txt"
@@ -534,6 +556,9 @@ sudo pip install flask-wtf
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="04_git_server.html" title="Git Server with Raspberry Pi"
+             >next</a> |</li>
         <li class="right" >
           <a href="02_data_analytics.html" title="Raspberry Pi for Data Analytics"
              >previous</a> |</li>

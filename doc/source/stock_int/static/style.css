@@ -12,7 +12,13 @@ a:visited { color: #B40404; text-decoration:none; }
 
 .page { font-family: 'PT Sans', sans-serif; margin: 2em auto; width: 66em; 
                   padding: 0.8em; background: white; color: #021A80}
-.metanav { text-align: right; font-size: 0.8em; padding: 0.3em;
+
+.metanav { text-align: right; font-size: 1em; padding: 0.3em;
                   margin-bottom: 1em; background: #fafafa; }
+
 .logo img { width: 30%; display: block; margin-right: auto;
             margin-left: auto; }
+
+.errors { font-size: 0.8em; color: red;}
+
+.form {text-align: center;}
