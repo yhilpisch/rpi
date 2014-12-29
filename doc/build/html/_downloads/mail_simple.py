@@ -6,17 +6,15 @@
 # The Python Quants GmbH
 #
 
-import argparse
 import smtplib
 from datetime import datetime
 from email.MIMEMultipart import MIMEMultipart
 from email.MIMEText import MIMEText
-from email.MIMEBase import MIMEBase
-from email import Encoders
+
 
 fromaddr = 'rpi@hilpisch.com'
 toaddrs  = 'yves@hilpisch.com'  # can be list of strings
-subject = 'Video Recorded.'
+subject = 'Security Alert.'
 
 #
 # Email object
@@ -26,28 +24,10 @@ msg['From'] = fromaddr
 msg['To'] = toaddrs
 msg['Subject'] = subject
 
-
-#
-# Email attachement
-#
-parser = argparse.ArgumentParser()
-parser.add_argument('input_file', help='Input file')
-args = parser.parse_args()
-
-part = MIMEBase('application', "octet-stream")
-part.set_payload(open(args.input_file, "rb").read())
-Encoders.encode_base64(part)
-
-part.add_header('Content-Disposition',
-                'attachment; filename="%s"' % args.input_file)
-
-msg.attach(part)
-
 #
 # Email body
 #
-body = 'This video has been recorded due to a motion just detected.'
-body += '\nTime: %s' % str(datetime.now())
+body = 'A motion has been detected.\nTime: %s' % str(datetime.now())
 msg.attach(MIMEText(body, 'plain'))
 
 #
@@ -62,6 +42,8 @@ text = msg.as_string()
 smtp.sendmail(fromaddr, toaddrs, text)
 smtp.quit()
 
-# Shell output
+#
+# Output
+#
 print "Message length is " + repr(len(msg))
 print text

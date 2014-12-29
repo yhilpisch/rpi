@@ -10,9 +10,6 @@ for f in files:
     if f.endswith('.html') and f[0] in ['0', 'i']:
         os.rename(f, f + '_old')
         r = open(f + '_old', 'r').readlines()
-        r = [l.replace('65p6tn4p8i', 'token') for l in r]
-        r = [l.replace('hilpisch13', 'username') for l in r]
-        r = [l.replace('henrynikolaus06', 'password') for l in r]
         n = open(f, 'w')
         n.writelines(r[:12])
         n.write(to_add)

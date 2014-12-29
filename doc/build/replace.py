@@ -6,14 +6,15 @@ rpl = {
     'henrynikolaus06': 'password',
     'rpi@hilpisch.com': 'rpi@mydomain.net',
     'yves@mydomain.net': 'me@mydomain.net',
-    'ftp://rpi:pythonquants@quant-platform.com': 'ftp://user:password@mydomain.net'
+    'ftp://rpi:pythonquants@quant-platform.com': 'ftp://user:password@mydomain.net',
+    'smtp.hilpisch.com': 'smtp.mydomain.net'
 }
 
 path = './html/'
 files = os.listdir(path)
 
 for f in files:
-    if f.endswith('.html') or f.endswith('.py'):
+    if f.endswith('.html') or f.endswith('.py') or f.endswith('.conf'):
         r = open(path + f, 'r').readlines()
         e = []
         for l in r:
