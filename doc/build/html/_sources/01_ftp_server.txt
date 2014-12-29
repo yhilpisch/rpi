@@ -1,4 +1,6 @@
 
+.. _ftp_server:
+
 Raspberry Pi as FTP Server
 -------------------------------
 

@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Webcam Surveillance &mdash; Raspberry Pi for Serious Things</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Raspberry Pi for Serious Things" href="index.html" />
+    <link rel="prev" title="Git Server with Raspberry Pi" href="04_git_server.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="04_git_server.html" title="Git Server with Raspberry Pi"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Serious RPi</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="webcam-surveillance">
+<span id="webcam"></span><h1>Webcam Surveillance<a class="headerlink" href="#webcam-surveillance" title="Permalink to this headline">¶</a></h1>
+<p>Since the RPi has two <strong>USB slots</strong> (model A &amp; B) or even four (model B+) it is easy to connect and use a webcam with it. Modern, simple webcams&#8212;even with infrared light&#8212;start below 10 USD. More professional equipment can, of course, also be used.</p>
+<p>This small project <strong>focuses on the software side</strong> of setting up an automated webcam surveillance system and not on the hardware side (which is probably determined by your specific purpose and maybe budget). I am using a rather small, simple USB webcam with infrared light to have some basic night filming capabilities available.</p>
+<div class="section" id="installing-motion">
+<h2>Installing Motion<a class="headerlink" href="#installing-motion" title="Permalink to this headline">¶</a></h2>
+<p>There is an excellent off-the-shelve, open source software called <strong>Motion</strong> available (cf. <a class="reference external" href="http://www.lavrsen.dk/foswiki/bin/view/Motion/WebHome">http://www.lavrsen.dk/foswiki/bin/view/Motion/WebHome</a>). It is installed as follows:</p>
+<div class="highlight-python"><div class="highlight"><pre>sudo apt-get install motion
+</pre></div>
+</div>
+<p>You find Motion <strong>configuration files</strong> generally in the directory <tt class="docutils literal"><span class="pre">/etc/motion</span></tt>. We will only need the one called <tt class="docutils literal"><span class="pre">motion.conf</span></tt>. You should make a <strong>new folder</strong> like:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">mkdir</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">pi</span><span class="o">/</span><span class="n">motion</span>
+</pre></div>
+</div>
+<p>and <strong>copy</strong> the configuration file to it:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">cp</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">motion</span><span class="o">/</span><span class="n">motion</span><span class="o">.</span><span class="n">conf</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">pi</span><span class="o">/</span><span class="n">motion</span>
+</pre></div>
+</div>
+<p>You should also create another folder like:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">mkdir</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">pi</span><span class="o">/</span><span class="n">motion</span><span class="o">/</span><span class="n">media</span>
+</pre></div>
+</div>
+<p>That&#8217;s already it for the installation of Motion.</p>
+</div>
+<div class="section" id="basic-configurations">
+<h2>Basic Configurations<a class="headerlink" href="#basic-configurations" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/tpq_logo_more_left_cut.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Webcam Surveillance</a><ul>
+<li><a class="reference internal" href="#installing-motion">Installing Motion</a></li>
+<li><a class="reference internal" href="#basic-configurations">Basic Configurations</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="04_git_server.html"
+                        title="previous chapter">Git Server with Raspberry Pi</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/05_webcam.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="04_git_server.html" title="Git Server with Raspberry Pi"
+             >previous</a> |</li>
+        <li><a href="index.html">Serious RPi</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Yves J. Hilpisch.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

@@ -1,10 +1,12 @@
 
+.. _basic_config:
+
 Basic Configurations
 ----------------------
 
 This section is about some basic, useful configurations of the RPi.
 
-.. _ssh_access::
+.. _ssh_access:
 
 SSH Access
 ~~~~~~~~~~~~~~
@@ -113,7 +115,7 @@ First, make a **swap directory and swap file**::
     sudo mkdir /media/swap
     sudo dd if=/dev/zero of=/media/swap/swapfile.img bs=1024 count=1M
 
-Second, generate the **swap filesystem**:
+Second, generate the **swap filesystem**::
 
     sudo mkswap /media/swap/swapfile.img
 

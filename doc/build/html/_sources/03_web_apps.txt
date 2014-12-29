@@ -121,7 +121,7 @@ The **results output page** looks like this:
 Generating Interactive D3 Plots
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Modern Web applications generally rely on nicely rendered, interactive graphics. The following example slightly adjusts the previous one to accomplish exaclty that. The main tool used here is **plotly** (cf. http://plot.ly), a graphics engine that allows to easily transform static Python/matplotlib plots into interactive **D3.js** plots (http://d3js.org/).
+Modern Web applications generally rely on **nicely rendered, interactive graphics**. The following example slightly adjusts the previous one to accomplish exaclty that. The main tool used here is **plotly** (cf. http://plot.ly), a graphics engine that allows to easily transform static Python/matplotlib plots into interactive **D3.js** plots (http://d3js.org/) or to directly generate such plots from Python.
 
 You need to **install plotly** as follows::
 

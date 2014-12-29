@@ -1,4 +1,6 @@
 
+.. _data_analytics:
+
 Raspberry Pi for Data Analytics
 ---------------------------------
 

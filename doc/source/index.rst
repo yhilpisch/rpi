@@ -10,15 +10,19 @@ Raspberry Pi for Serious Things
 
 This Web site and tutorial is about setting up and using the Raspberry Pi for some serious things. Among others, it covers so far:
 
-* using the RPi via **SSH access** and a **fixed IP address**
-* using the RPi as **FTP server**
-* doing Python-based **data analytics** with the RPi
-* building and deploying **Web apps** on the RPi
+* using the RPi via **SSH access** and a **fixed IP address** (:ref:`fixip`)
+* using the RPi as **FTP server** (:ref:`ftp_server`)
+* doing Python-based **data analytics** with the RPi (:ref:`data_analytics`)
+* building and deploying **Web apps** on the RPi (:ref:`web_apps`)
+* using the RPi as **Git server** (:ref:`git_server`)
+* simple **Webcam surveillance** with the RPi (:ref:`webcam`)
 
 I assume that you have bought a RPi and all the equipment necessary to use it (power plug, etc.). It is recommended to start using the RPi connected to the Web via an Ethernet cable (for convenience and speed).
 
 Several topics and projects of this tutorial are also interesting for those not (yet) having a RPi but having available or being willing to rent a (small) **cloud server instance** e.g. from **DigitalOcean**. These start at **5 USD per month** for a 1 core, 512 MB, 20 GB SSD configuration. Just follow this link to **register**: https://www.digitalocean.com/?refcode=fbe512dd3dac.
 
+The majority of examples and projects should also be working with alternative hardware like **BananaPi** (http://www.bananapi.com) or **Odroid** (cf. http://www.hardkernel.com/main/products/prdt_info.php) as long as a **Debian Linux derivative** (e.g. Raspbian, Ubuntu) is installed.
+ 
 
 Setting up the RPi
 ~~~~~~~~~~~~~~~~~~~~
@@ -86,6 +90,7 @@ The documentation is structured as follows:
    02_data_analytics
    03_web_apps
    04_git_server
+   05_webcam
 
 
 About the Author

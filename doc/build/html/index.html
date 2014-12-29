@@ -50,13 +50,16 @@
 <h1>Raspberry Pi for Serious Things<a class="headerlink" href="#raspberry-pi-for-serious-things" title="Permalink to this headline">¶</a></h1>
 <p>This Web site and tutorial is about setting up and using the Raspberry Pi for some serious things. Among others, it covers so far:</p>
 <ul class="simple">
-<li>using the RPi via <strong>SSH access</strong> and a <strong>fixed IP address</strong></li>
-<li>using the RPi as <strong>FTP server</strong></li>
-<li>doing Python-based <strong>data analytics</strong> with the RPi</li>
-<li>building and deploying <strong>Web apps</strong> on the RPi</li>
+<li>using the RPi via <strong>SSH access</strong> and a <strong>fixed IP address</strong> (<a class="reference internal" href="00_basic_config.html#fixip"><em>Fixed IP Address</em></a>)</li>
+<li>using the RPi as <strong>FTP server</strong> (<a class="reference internal" href="01_ftp_server.html#ftp-server"><em>Raspberry Pi as FTP Server</em></a>)</li>
+<li>doing Python-based <strong>data analytics</strong> with the RPi (<a class="reference internal" href="02_data_analytics.html#data-analytics"><em>Raspberry Pi for Data Analytics</em></a>)</li>
+<li>building and deploying <strong>Web apps</strong> on the RPi (<a class="reference internal" href="03_web_apps.html#web-apps"><em>Web Apps with Raspberry Pi</em></a>)</li>
+<li>using the RPi as <strong>Git server</strong> (<a class="reference internal" href="04_git_server.html#git-server"><em>Git Server with Raspberry Pi</em></a>)</li>
+<li>simple <strong>Webcam surveillance</strong> with the RPi (<a class="reference internal" href="05_webcam.html#webcam"><em>Webcam Surveillance</em></a>)</li>
 </ul>
 <p>I assume that you have bought a RPi and all the equipment necessary to use it (power plug, etc.). It is recommended to start using the RPi connected to the Web via an Ethernet cable (for convenience and speed).</p>
 <p>Several topics and projects of this tutorial are also interesting for those not (yet) having a RPi but having available or being willing to rent a (small) <strong>cloud server instance</strong> e.g. from <strong>DigitalOcean</strong>. These start at <strong>5 USD per month</strong> for a 1 core, 512 MB, 20 GB SSD configuration. Just follow this link to <strong>register</strong>: <a class="reference external" href="https://www.digitalocean.com/?refcode=fbe512dd3dac">https://www.digitalocean.com/?refcode=fbe512dd3dac</a>.</p>
+<p>The majority of examples and projects should also be working with alternative hardware like <strong>BananaPi</strong> (<a class="reference external" href="http://www.bananapi.com">http://www.bananapi.com</a>) or <strong>Odroid</strong> (cf. <a class="reference external" href="http://www.hardkernel.com/main/products/prdt_info.php">http://www.hardkernel.com/main/products/prdt_info.php</a>) as long as a <strong>Debian Linux derivative</strong> (e.g. Raspbian, Ubuntu) is installed.</p>
 <div class="section" id="setting-up-the-rpi">
 <h2>Setting up the RPi<a class="headerlink" href="#setting-up-the-rpi" title="Permalink to this headline">¶</a></h2>
 <p>The first step is to build a bootable SD card for the RPi. We will use a <strong>Raspbian Debian Wheezy</strong> operating system (OS) image in the following which you can download here: <a class="reference external" href="http://www.raspberrypi.org/downloads/">http://www.raspberrypi.org/downloads/</a>.</p>
@@ -130,6 +133,11 @@
 <li class="toctree-l2"><a class="reference internal" href="04_git_server.html#using-a-usb-storage-device">Using a USB Storage Device</a></li>
 <li class="toctree-l2"><a class="reference internal" href="04_git_server.html#remote-repository-on-the-rpi">Remote Repository on the RPi</a></li>
 <li class="toctree-l2"><a class="reference internal" href="04_git_server.html#generating-local-git-repository">Generating Local Git Repository</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="05_webcam.html">Webcam Surveillance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="05_webcam.html#installing-motion">Installing Motion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05_webcam.html#basic-configurations">Basic Configurations</a></li>
 </ul>
 </li>
 </ul>

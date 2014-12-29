@@ -1,4 +1,6 @@
 
+.. _git_server:
+
 Git Server with Raspberry Pi
 -------------------------------
 
@@ -6,11 +8,11 @@ The version control system **Git** (cf. the excellent documentation under http:/
 
 While, for example, Codebreak let's you store as many private Git repositories as you like, with Github you have to pay for this feature. However, in principle, every server can serve as a Git server (even if not with the many nice, graphical features the aforementioned platforms provide).
 
-To use the RPi as a Git server (or better a remote Git repository storage system) does not require software-wise anything more the **Git installed** on the RPi. It should be installed already, if not do::
+To use the RPi as a **Git server** (or a "remote Git repository storage system") does not require software-wise anything more the **Git installed** on the RPi. It should be installed already, if not do::
 
     sudo apt-get install git
 
-In addition, the RPi must be configured for SSH access (cf. :ref:`ssh_access`).
+In addition, the RPi must be configured for **SSH access** (cf. :ref:`ssh_access`).
 
 Using a USB Storage Device
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
