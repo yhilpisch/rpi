@@ -67,11 +67,45 @@ Then **copy the public key** via (Linux)::
 
 On the Mac see, for example, https://github.com/beautifulcode/ssh-copy-id-for-OSX.
 
+Enlarging the Swap Capacity
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Other Useful Tools & Configurations
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The typical RPi comes with 512 MB of memory only. This might not be enough in certain scenarios. One way to increase the memory (if only virtually) is to work with a larger than normal **swap partition**. The following steps generate a **1 GB** swap partition for the RPi.
 
-This section provides a collection of other useful tools to work with the RPi (and other Linux/Debian-based servers). It also shows some helpful configurations.
+First, make a **swap directory and swap file**::
+
+    sudo mkdir /media/swap
+    sudo dd if=/dev/zero of=/media/swap/swapfile.img bs=1024 count=1M
+
+Second, generate the **swap filesystem**::
+
+    sudo mkswap /media/swap/swapfile.img
+
+Third, **edit** the following file::
+
+    sudo nano /etc/fstab
+
+**Add** this line to that file::
+
+    /media/swap/swapfile.img swap swap sw 0 0
+
+Fourth, **activate** the swap file::
+
+    sudo swapon /media/swap/swapfile.img
+
+Finally, you can **check** whether the new swap configuration is indeed active---either via htop or as follws::
+
+    pi@rpi ~ $ cat /proc/swaps
+    Filename                                Type            Size    Used    Priority
+    /var/swap                               file            102396  6064    -1
+    /media/swap/swapfile.img                file            1048572 0       -2
+    pi@rpi ~ $
+
+
+Other Useful Stuff
+~~~~~~~~~~~~~~~~~~
+
+This section provides a collection of other useful tools to work with the RPi (and other Linux/Debian-based servers).
 
 Session Management with Screen
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -103,38 +137,4 @@ Running htop gives you an overview over the **usage of the system resources and 
 
 Running htop might give you an output like this one:
 
-.. image:: htop.png
-
-Enlarging the Swap Capacity
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-The typical RPi comes with 512 MB of memory only. This might not be enough in certain scenarios. One way to increase the memory (if only virtually) is to work with a larger than normal **swap partition**. The following steps generate a **1 GB** swap partition for the RPi.
-
-First, make a **swap directory and swap file**::
-
-    sudo mkdir /media/swap
-    sudo dd if=/dev/zero of=/media/swap/swapfile.img bs=1024 count=1M
-
-Second, generate the **swap filesystem**::
-
-    sudo mkswap /media/swap/swapfile.img
-
-Third, **edit** the following file::
-
-    sudo nano /etc/fstab
-
-**Add** this line to that file::
-
-    /media/swap/swapfile.img swap swap sw 0 0
-
-Fourth, **activate** the swap file::
-
-    sudo swapon /media/swap/swapfile.img
-
-Finally, you can **check** whether the new swap configuration is indeed active---either via htop or as follws::
-
-    pi@rpi ~ $ cat /proc/swaps
-    Filename                                Type            Size    Used    Priority
-    /var/swap                               file            102396  6064    -1
-    /media/swap/swapfile.img                file            1048572 0       -2
-    pi@rpi ~ $ 
+.. image:: htop.png 

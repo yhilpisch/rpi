@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
 <link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -119,8 +120,8 @@
 <span class="kn">from</span> <span class="nn">email.MIMEText</span> <span class="kn">import</span> <span class="n">MIMEText</span>
 
 
-<span class="n">fromaddr</span> <span class="o">=</span> <span class="s">&#39;rpi@hilpisch.com&#39;</span>
-<span class="n">toaddrs</span>  <span class="o">=</span> <span class="s">&#39;yves@hilpisch.com&#39;</span>  <span class="c"># can be list of strings</span>
+<span class="n">fromaddr</span> <span class="o">=</span> <span class="s">&#39;rpi@mydomain.net&#39;</span>
+<span class="n">toaddrs</span>  <span class="o">=</span> <span class="s">&#39;me@mydomain.net&#39;</span>  <span class="c"># can be list of strings</span>
 <span class="n">subject</span> <span class="o">=</span> <span class="s">&#39;Security Alert.&#39;</span>
 
 <span class="c">#</span>
@@ -143,8 +144,8 @@
 <span class="c">#</span>
 <span class="n">smtp</span> <span class="o">=</span> <span class="n">smtplib</span><span class="o">.</span><span class="n">SMTP</span><span class="p">()</span>
 <span class="n">smtp</span><span class="o">.</span><span class="n">set_debuglevel</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">smtp</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s">&#39;smtp.hilpisch.com&#39;</span><span class="p">,</span> <span class="mi">587</span><span class="p">)</span>
-<span class="n">smtp</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="s">&#39;hilpisch13&#39;</span><span class="p">,</span> <span class="s">&#39;henrynikolaus06&#39;</span><span class="p">)</span>
+<span class="n">smtp</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s">&#39;smtp.mydomain.net&#39;</span><span class="p">,</span> <span class="mi">587</span><span class="p">)</span>
+<span class="n">smtp</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="s">&#39;username&#39;</span><span class="p">,</span> <span class="s">&#39;password&#39;</span><span class="p">)</span>
 <span class="n">text</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">as_string</span><span class="p">()</span>
 <span class="n">smtp</span><span class="o">.</span><span class="n">sendmail</span><span class="p">(</span><span class="n">fromaddr</span><span class="p">,</span> <span class="n">toaddrs</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
 <span class="n">smtp</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
@@ -193,8 +194,8 @@
 <span class="kn">from</span> <span class="nn">email.MIMEBase</span> <span class="kn">import</span> <span class="n">MIMEBase</span>
 <span class="kn">from</span> <span class="nn">email</span> <span class="kn">import</span> <span class="n">Encoders</span>
 
-<span class="n">fromaddr</span> <span class="o">=</span> <span class="s">&#39;rpi@hilpisch.com&#39;</span>
-<span class="n">toaddrs</span>  <span class="o">=</span> <span class="s">&#39;yves@hilpisch.com&#39;</span>  <span class="c"># can be list of strings</span>
+<span class="n">fromaddr</span> <span class="o">=</span> <span class="s">&#39;rpi@mydomain.net&#39;</span>
+<span class="n">toaddrs</span>  <span class="o">=</span> <span class="s">&#39;me@mydomain.net&#39;</span>  <span class="c"># can be list of strings</span>
 <span class="n">subject</span> <span class="o">=</span> <span class="s">&#39;Video Recorded.&#39;</span>
 
 <span class="c">#</span>
@@ -235,8 +236,8 @@
 <span class="c">#</span>
 <span class="n">smtp</span> <span class="o">=</span> <span class="n">smtplib</span><span class="o">.</span><span class="n">SMTP</span><span class="p">()</span>
 <span class="n">smtp</span><span class="o">.</span><span class="n">set_debuglevel</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">smtp</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s">&#39;smtp.hilpisch.com&#39;</span><span class="p">,</span> <span class="mi">587</span><span class="p">)</span>
-<span class="n">smtp</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="s">&#39;hilpisch13&#39;</span><span class="p">,</span> <span class="s">&#39;henrynikolaus06&#39;</span><span class="p">)</span>
+<span class="n">smtp</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s">&#39;smtp.mydomain.net&#39;</span><span class="p">,</span> <span class="mi">587</span><span class="p">)</span>
+<span class="n">smtp</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="s">&#39;username&#39;</span><span class="p">,</span> <span class="s">&#39;password&#39;</span><span class="p">)</span>
 <span class="n">text</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">as_string</span><span class="p">()</span>
 <span class="n">smtp</span><span class="o">.</span><span class="n">sendmail</span><span class="p">(</span><span class="n">fromaddr</span><span class="p">,</span> <span class="n">toaddrs</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
 <span class="n">smtp</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>

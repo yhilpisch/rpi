@@ -12,8 +12,8 @@ from email.MIMEMultipart import MIMEMultipart
 from email.MIMEText import MIMEText
 
 
-fromaddr = 'rpi@hilpisch.com'
-toaddrs  = 'yves@hilpisch.com'  # can be list of strings
+fromaddr = 'rpi@mydomain.net'
+toaddrs  = 'me@mydomain.net'  # can be list of strings
 subject = 'Security Alert.'
 
 #
@@ -36,8 +36,8 @@ msg.attach(MIMEText(body, 'plain'))
 #
 smtp = smtplib.SMTP()
 smtp.set_debuglevel(1)
-smtp.connect('smtp.hilpisch.com', 587)
-smtp.login('hilpisch13', 'henrynikolaus06')
+smtp.connect('smtp.mydomain.net', 587)
+smtp.login('username', 'password')
 text = msg.as_string()
 smtp.sendmail(fromaddr, toaddrs, text)
 smtp.quit()

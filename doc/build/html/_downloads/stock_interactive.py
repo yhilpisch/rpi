@@ -20,7 +20,7 @@ from forms import SymbolSearch
 # Needed for plotly usage
 #
 
-ply.sign_in('yves', '65p6tn4p8i')
+ply.sign_in('yves', 'token')
 
 def df_to_plotly(df):
     '''

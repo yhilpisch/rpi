@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
 <link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -107,38 +108,8 @@ gateway 192.168.178.1
 <p>On the Mac see, for example, <a class="reference external" href="https://github.com/beautifulcode/ssh-copy-id-for-OSX">https://github.com/beautifulcode/ssh-copy-id-for-OSX</a>.</p>
 </div>
 </div>
-<div class="section" id="other-useful-tools-configurations">
-<h2>Other Useful Tools &amp; Configurations<a class="headerlink" href="#other-useful-tools-configurations" title="Permalink to this headline">¶</a></h2>
-<p>This section provides a collection of other useful tools to work with the RPi (and other Linux/Debian-based servers). It also shows some helpful configurations.</p>
-<div class="section" id="session-management-with-screen">
-<h3>Session Management with Screen<a class="headerlink" href="#session-management-with-screen" title="Permalink to this headline">¶</a></h3>
-<p>A really helpful tool when working via <tt class="docutils literal"><span class="pre">ssh</span></tt> access is <strong>Screen</strong> (cf. <a class="reference external" href="http://ss64.com/bash/screen.html">http://ss64.com/bash/screen.html</a>). It allows you to have <strong>multiple shells</strong> running at the same time, to disconnect from them and later reconnect. Install it via:</p>
-<div class="highlight-python"><div class="highlight"><pre>sudo apt-get install screen
-</pre></div>
-</div>
-<p>To start it, type:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">screen</span>
-</pre></div>
-</div>
-<p>A new shell is created by <tt class="docutils literal"><span class="pre">ctrl+a</span></tt> then <tt class="docutils literal"><span class="pre">c</span></tt>. You switch to the next shell with <tt class="docutils literal"><span class="pre">ctrl+a</span></tt> and then <tt class="docutils literal"><span class="pre">n</span></tt> (more commands are found under the above link).</p>
-<p>Later when you reconnect via <tt class="docutils literal"><span class="pre">ssh</span></tt> to the RPi you can <strong>reattach to your Screen session</strong> via:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">screen</span> <span class="o">-</span><span class="n">r</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="system-monitoring-with-htop">
-<h3>System Monitoring with htop<a class="headerlink" href="#system-monitoring-with-htop" title="Permalink to this headline">¶</a></h3>
-<p>Of course, there a many <strong>useful tools</strong> available in the Linux/RPi world. One you should install as well is <strong>htop</strong> (cf. <a class="reference external" href="http://manpages.ubuntu.com/manpages/oneiric/man1/htop.1.html">http://manpages.ubuntu.com/manpages/oneiric/man1/htop.1.html</a>)</p>
-<p>You can install it via:</p>
-<div class="highlight-python"><div class="highlight"><pre>sudo apt-get install htop
-</pre></div>
-</div>
-<p>Running htop gives you an overview over the <strong>usage of the system resources and the processes running</strong> (including their memory consumption and CPU usage).</p>
-<p>Running htop might give you an output like this one:</p>
-<img alt="_images/htop.png" src="_images/htop.png" />
-</div>
 <div class="section" id="enlarging-the-swap-capacity">
-<h3>Enlarging the Swap Capacity<a class="headerlink" href="#enlarging-the-swap-capacity" title="Permalink to this headline">¶</a></h3>
+<h2>Enlarging the Swap Capacity<a class="headerlink" href="#enlarging-the-swap-capacity" title="Permalink to this headline">¶</a></h2>
 <p>The typical RPi comes with 512 MB of memory only. This might not be enough in certain scenarios. One way to increase the memory (if only virtually) is to work with a larger than normal <strong>swap partition</strong>. The following steps generate a <strong>1 GB</strong> swap partition for the RPi.</p>
 <p>First, make a <strong>swap directory and swap file</strong>:</p>
 <div class="highlight-python"><div class="highlight"><pre>sudo mkdir /media/swap
@@ -170,6 +141,36 @@ pi@rpi ~ $
 </pre></div>
 </div>
 </div>
+<div class="section" id="other-useful-stuff">
+<h2>Other Useful Stuff<a class="headerlink" href="#other-useful-stuff" title="Permalink to this headline">¶</a></h2>
+<p>This section provides a collection of other useful tools to work with the RPi (and other Linux/Debian-based servers).</p>
+<div class="section" id="session-management-with-screen">
+<h3>Session Management with Screen<a class="headerlink" href="#session-management-with-screen" title="Permalink to this headline">¶</a></h3>
+<p>A really helpful tool when working via <tt class="docutils literal"><span class="pre">ssh</span></tt> access is <strong>Screen</strong> (cf. <a class="reference external" href="http://ss64.com/bash/screen.html">http://ss64.com/bash/screen.html</a>). It allows you to have <strong>multiple shells</strong> running at the same time, to disconnect from them and later reconnect. Install it via:</p>
+<div class="highlight-python"><div class="highlight"><pre>sudo apt-get install screen
+</pre></div>
+</div>
+<p>To start it, type:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">screen</span>
+</pre></div>
+</div>
+<p>A new shell is created by <tt class="docutils literal"><span class="pre">ctrl+a</span></tt> then <tt class="docutils literal"><span class="pre">c</span></tt>. You switch to the next shell with <tt class="docutils literal"><span class="pre">ctrl+a</span></tt> and then <tt class="docutils literal"><span class="pre">n</span></tt> (more commands are found under the above link).</p>
+<p>Later when you reconnect via <tt class="docutils literal"><span class="pre">ssh</span></tt> to the RPi you can <strong>reattach to your Screen session</strong> via:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">screen</span> <span class="o">-</span><span class="n">r</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="system-monitoring-with-htop">
+<h3>System Monitoring with htop<a class="headerlink" href="#system-monitoring-with-htop" title="Permalink to this headline">¶</a></h3>
+<p>Of course, there a many <strong>useful tools</strong> available in the Linux/RPi world. One you should install as well is <strong>htop</strong> (cf. <a class="reference external" href="http://manpages.ubuntu.com/manpages/oneiric/man1/htop.1.html">http://manpages.ubuntu.com/manpages/oneiric/man1/htop.1.html</a>)</p>
+<p>You can install it via:</p>
+<div class="highlight-python"><div class="highlight"><pre>sudo apt-get install htop
+</pre></div>
+</div>
+<p>Running htop gives you an overview over the <strong>usage of the system resources and the processes running</strong> (including their memory consumption and CPU usage).</p>
+<p>Running htop might give you an output like this one:</p>
+<img alt="_images/htop.png" src="_images/htop.png" />
+</div>
 </div>
 </div>
 
@@ -191,10 +192,10 @@ pi@rpi ~ $
 <li><a class="reference internal" href="#using-public-keys">Using Public Keys</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#other-useful-tools-configurations">Other Useful Tools &amp; Configurations</a><ul>
+<li><a class="reference internal" href="#enlarging-the-swap-capacity">Enlarging the Swap Capacity</a></li>
+<li><a class="reference internal" href="#other-useful-stuff">Other Useful Stuff</a><ul>
 <li><a class="reference internal" href="#session-management-with-screen">Session Management with Screen</a></li>
 <li><a class="reference internal" href="#system-monitoring-with-htop">System Monitoring with htop</a></li>
-<li><a class="reference internal" href="#enlarging-the-swap-capacity">Enlarging the Swap Capacity</a></li>
 </ul>
 </li>
 </ul>
